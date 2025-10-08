@@ -4,9 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,101 +11,67 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 
 @Composable
-fun BanderaCuba() {
+fun SpidermanPixelArt() {
+    val r = Color(0xFFE23636)
+    val a = Color(0xFF2B4C7E)
+    val n = Color.Black
+    val b = Color.White
+    val t = Color.Transparent
+
+    val m = listOf(
+        listOf(t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t),
+        listOf(t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t),
+        listOf(t, t, t, t, t, t, t, n, n, n, n, n, n, n, t, t, t, t, t, t, t),
+        listOf(t, t, t, t, t, n, n, r, r, r, r, r, r, r, n, n, t, t, t, t, t),
+        listOf(t, t, t, t, n, r, r, r, r, r, r, r, r, r, r, r, n, t, t, t, t),
+        listOf(t, t, t, t, n, r, r, r, r, r, r, r, r, r, r, r, n, t, t, t, t),
+        listOf(t, t, t, n, r, n, n, r, r, r, r, r, r, r, n, n, r, n, t, t, t),
+        listOf(t, t, t, n, n, b, b, n, r, r, r, r, r, n, b, b, n, n, t, t, t),
+        listOf(t, t, t, n, b, b, b, b, n, r, r, r, n, b, b, b, b, n, t, t, t),
+        listOf(t, t, t, n, b, b, b, b, b, n, r, n, b, b, b, b, b, n, t, t, t),
+        listOf(t, t, t, n, b, b, b, b, b, b, n, b, b, b, b, b, b, n, t, t, t),
+        listOf(t, t, t, n, b, b, b, b, b, b, n, b, b, b, b, b, b, n, t, t, t),
+        listOf(t, t, t, t, n, n, b, b, b, n, r, n, b, b, b, n, n, t, t, t, t),
+        listOf(t, t, t, t, n, r, n, n, n, r, r, r, n, n, n, r, n, t, t, t, t),
+        listOf(t, t, t, t, t, n, r, r, r, r, r, r, r, r, r, n, t, t, t, t, t),
+        listOf(t, t, t, t, t, t, n, n, r, r, r, r, r, n, n, t, t, t, t, t, t),
+        listOf(t, t, t, t, t, n, r, r, n, n, n, n, n, r, r, n, t, t, t, t, t),
+        listOf(t, t, t, t, n, r, r, r, n, r, n, r, n, r, r, r, n, t, t, t, t),
+        listOf(t, t, t, n, a, a, n, a, r, n, n, n, r, a, n, a, a, n, t, t, t),
+        listOf(t, t, n, r, r, a, n, a, n, r, n, r, n, a, n, a, r, r, n, t, t),
+        listOf(t, t, n, r, r, n, n, r, r, r, r, r, r, r, n, n, r, r, n, t, t),
+        listOf(t, t, t, n, n, t, n, a, a, a, a, a, a, a, n, t, n, n, t, t, t),
+        listOf(t, t, t, t, t, n, a, a, a, a, a, a, a, a, a, n, t, t, t, t, t),
+        listOf(t, t, t, t, t, n, a, a, a, n, n, n, a, a, a, n, t, t, t, t, t),
+        listOf(t, t, t, t, n, n, r, r, n, t, t, t, n, r, r, n, n, t, t, t, t),
+        listOf(t, t, t, t, n, r, r, r, n, t, t, t, n, r, r, r, n, t, t, t, t),
+        listOf(t, t, t, t, n, n, n, n, n, t, t, t, n, n, n, n, n, t, t, t, t),
+        listOf(t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t),
+        listOf(t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t)
+    )
+
     ConstraintLayout(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFEEEEEE))
     ) {
-        val (franja1, franja2, franja3, franja4, franja5, triangulo, estrella) = createRefs()
+        val refs = mutableListOf<androidx.constraintlayout.compose.ConstrainedLayoutReference>()
+        repeat(m.size * m[0].size) { refs.add(createRef()) }
 
-        Box(
-            modifier = Modifier
-                .background(Color(0xFF002A8F))
-                .constrainAs(franja1) {
-                    start.linkTo(parent.start)
-                    top.linkTo(parent.top)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(franja2.top)
-                    width = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                    height = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                }
-        )
-
-        Box(
-            modifier = Modifier
-                .background(Color.White)
-                .constrainAs(franja2) {
-                    start.linkTo(parent.start)
-                    top.linkTo(franja1.bottom)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(franja3.top)
-                    width = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                    height = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                }
-        )
-
-        Box(
-            modifier = Modifier
-                .background(Color(0xFF002A8F))
-                .constrainAs(franja3) {
-                    start.linkTo(parent.start)
-                    top.linkTo(franja2.bottom)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(franja4.top)
-                    width = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                    height = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                }
-        )
-
-        Box(
-            modifier = Modifier
-                .background(Color.White)
-                .constrainAs(franja4) {
-                    start.linkTo(parent.start)
-                    top.linkTo(franja3.bottom)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(franja5.top)
-                    width = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                    height = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                }
-        )
-
-        Box(
-            modifier = Modifier
-                .background(Color(0xFF002A8F))
-                .constrainAs(franja5) {
-                    start.linkTo(parent.start)
-                    top.linkTo(franja4.bottom)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(parent.bottom)
-                    width = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                    height = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                }
-        )
-
-        Box(
-            modifier = Modifier
-                .background(Color(0xFFCE1126))
-                .constrainAs(triangulo) {
-                    start.linkTo(parent.start)
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                    width = androidx.constraintlayout.compose.Dimension.value(200.dp)
-                    height = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                }
-        )
-
-        Icon(
-            imageVector = Icons.Default.Star,
-            contentDescription = "Estrella",
-            tint = Color.White,
-            modifier = Modifier
-                .size(70.dp)
-                .constrainAs(estrella) {
-                    start.linkTo(triangulo.start)
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                    end.linkTo(triangulo.end)
-                }
-        )
+        var i = 0
+        repeat(m.size) { row ->
+            repeat(m[row].size) { col ->
+                Box(
+                    modifier = Modifier
+                        .size(20.dp)
+                        .background(m[row][col])
+                        .constrainAs(refs[i]) {
+                            start.linkTo(parent.start, margin = (50 + col * 20).dp)
+                            top.linkTo(parent.top, margin = (100 + row * 20).dp)
+                        }
+                )
+                i++
+            }
+        }
     }
 }
