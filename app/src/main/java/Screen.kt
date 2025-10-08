@@ -4,73 +4,58 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.Icon
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 
 @Composable
-fun BanderaChile() {
+fun BanderaBrasil() {
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
-        val (azul, blanco, rojo, estrella) = createRefs()
+        val (fondo, rombo, circulo) = createRefs()
 
         Box(
             modifier = Modifier
-                .background(Color(0xFF0039A6))
-                .constrainAs(azul) {
-                    start.linkTo(parent.start)
-                    top.linkTo(parent.top)
-                    bottom.linkTo(rojo.top)
-                    end.linkTo(blanco.start)
-                    width = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                    height = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                }
-        )
-
-        Box(
-            modifier = Modifier
-                .background(Color.White)
-                .constrainAs(blanco) {
-                    start.linkTo(azul.end)
-                    top.linkTo(parent.top)
-                    bottom.linkTo(rojo.top)
-                    end.linkTo(parent.end)
-                    width = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                    height = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                }
-        )
-
-        Box(
-            modifier = Modifier
-                .background(Color(0xFFD52B1E))
-                .constrainAs(rojo) {
+                .background(Color(0xFF009739))
+                .constrainAs(fondo) {
                     start.linkTo(parent.start)
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
                     end.linkTo(parent.end)
                     width = androidx.constraintlayout.compose.Dimension.fillToConstraints
                     height = androidx.constraintlayout.compose.Dimension.fillToConstraints
-                    verticalBias = 1f
                 }
         )
 
-        Icon(
-            imageVector = Icons.Default.Star,
-            contentDescription = "Estrella",
-            tint = Color.White,
+        Box(
             modifier = Modifier
-                .size(60.dp)
-                .constrainAs(estrella) {
-                    start.linkTo(azul.start)
-                    top.linkTo(azul.top)
-                    bottom.linkTo(azul.bottom)
-                    end.linkTo(azul.end)
+                .size(300.dp, 200.dp)
+                .rotate(0f)
+                .background(Color(0xFFFEDF00))
+                .constrainAs(rombo) {
+                    start.linkTo(parent.start)
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                    end.linkTo(parent.end)
+                }
+        )
+
+        Box(
+            modifier = Modifier
+                .size(120.dp)
+                .clip(CircleShape)
+                .background(Color(0xFF002776))
+                .constrainAs(circulo) {
+                    start.linkTo(parent.start)
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                    end.linkTo(parent.end)
                 }
         )
     }
