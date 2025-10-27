@@ -1,77 +1,65 @@
 package com.example.unidad1
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
 
 @Composable
-fun SpidermanPixelArt() {
-    val r = Color(0xFFE23636)
-    val a = Color(0xFF2B4C7E)
-    val n = Color.Black
-    val b = Color.White
-    val t = Color.Transparent
+fun Suma() {
+    var numero1 by remember { mutableStateOf("") }
+    var numero2 by remember { mutableStateOf("") }
+    var resultado by remember { mutableStateOf(0) }
 
-    val m = listOf(
-        listOf(t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t),
-        listOf(t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t),
-        listOf(t, t, t, t, t, t, t, n, n, n, n, n, n, n, t, t, t, t, t, t, t),
-        listOf(t, t, t, t, t, n, n, r, r, r, r, r, r, r, n, n, t, t, t, t, t),
-        listOf(t, t, t, t, n, r, r, r, r, r, r, r, r, r, r, r, n, t, t, t, t),
-        listOf(t, t, t, t, n, r, r, r, r, r, r, r, r, r, r, r, n, t, t, t, t),
-        listOf(t, t, t, n, r, n, n, r, r, r, r, r, r, r, n, n, r, n, t, t, t),
-        listOf(t, t, t, n, n, b, b, n, r, r, r, r, r, n, b, b, n, n, t, t, t),
-        listOf(t, t, t, n, b, b, b, b, n, r, r, r, n, b, b, b, b, n, t, t, t),
-        listOf(t, t, t, n, b, b, b, b, b, n, r, n, b, b, b, b, b, n, t, t, t),
-        listOf(t, t, t, n, b, b, b, b, b, b, n, b, b, b, b, b, b, n, t, t, t),
-        listOf(t, t, t, n, b, b, b, b, b, b, n, b, b, b, b, b, b, n, t, t, t),
-        listOf(t, t, t, t, n, n, b, b, b, n, r, n, b, b, b, n, n, t, t, t, t),
-        listOf(t, t, t, t, n, r, n, n, n, r, r, r, n, n, n, r, n, t, t, t, t),
-        listOf(t, t, t, t, t, n, r, r, r, r, r, r, r, r, r, n, t, t, t, t, t),
-        listOf(t, t, t, t, t, t, n, n, r, r, r, r, r, n, n, t, t, t, t, t, t),
-        listOf(t, t, t, t, t, n, r, r, n, n, n, n, n, r, r, n, t, t, t, t, t),
-        listOf(t, t, t, t, n, r, r, r, n, r, n, r, n, r, r, r, n, t, t, t, t),
-        listOf(t, t, t, n, a, a, n, a, r, n, n, n, r, a, n, a, a, n, t, t, t),
-        listOf(t, t, n, r, r, a, n, a, n, r, n, r, n, a, n, a, r, r, n, t, t),
-        listOf(t, t, n, r, r, n, n, r, r, r, r, r, r, r, n, n, r, r, n, t, t),
-        listOf(t, t, t, n, n, t, n, a, a, a, a, a, a, a, n, t, n, n, t, t, t),
-        listOf(t, t, t, t, t, n, a, a, a, a, a, a, a, a, a, n, t, t, t, t, t),
-        listOf(t, t, t, t, t, n, a, a, a, n, n, n, a, a, a, n, t, t, t, t, t),
-        listOf(t, t, t, t, n, n, r, r, n, t, t, t, n, r, r, n, n, t, t, t, t),
-        listOf(t, t, t, t, n, r, r, r, n, t, t, t, n, r, r, r, n, t, t, t, t),
-        listOf(t, t, t, t, n, n, n, n, n, t, t, t, n, n, n, n, n, t, t, t, t),
-        listOf(t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t),
-        listOf(t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t)
-    )
-
-    ConstraintLayout(
+    Box(
         modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFEEEEEE))
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        val refs = mutableListOf<androidx.constraintlayout.compose.ConstrainedLayoutReference>()
-        repeat(m.size * m[0].size) { refs.add(createRef()) }
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-        var i = 0
-        repeat(m.size) { row ->
-            repeat(m[row].size) { col ->
-                Box(
-                    modifier = Modifier
-                        .size(20.dp)
-                        .background(m[row][col])
-                        .constrainAs(refs[i]) {
-                            start.linkTo(parent.start, margin = (50 + col * 20).dp)
-                            top.linkTo(parent.top, margin = (100 + row * 20).dp)
-                        }
-                )
-                i++
+            TextField(
+                value = numero1,
+                onValueChange = { numero1 = it },
+                label = { Text("Número 1") },
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(0.8f)
+            )
+
+            TextField(
+                value = numero2,
+                onValueChange = { numero2 = it },
+                label = { Text("Número 2") },
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(0.8f)
+            )
+
+            Button(
+                onClick = {
+                    val n1 = numero1.toIntOrNull() ?: 0
+                    val n2 = numero2.toIntOrNull() ?: 0
+                    resultado = n1 + n2
+                },
+                modifier = Modifier.padding(8.dp)
+            ) {
+                Text("Sumar")
             }
+
+            Text(text = "Resultado: $resultado", modifier = Modifier.padding(8.dp))
         }
     }
 }
